@@ -1,0 +1,59 @@
+[1mdiff --git a/app.js b/app.js[m
+[1mindex 10d40ef..13f15ff 100644[m
+[1m--- a/app.js[m
+[1m+++ b/app.js[m
+[36m@@ -18,8 +18,19 @@[m [mvar bodyParser = require('body-parser');[m
+ app.use(bodyParser());[m
+ app.use(bodyParser.json({extended:true}));[m
+ app.use(express.static(__dirname + '/'));[m
+[32m+[m[32m//middleware is used[m
+[32m+[m[32mapp.use(function(req,res,next){[m
+[32m+[m	[32mconsole.log("time of request ",new Date());[m
+[32m+[m	[32mconsole.log("request url is ",req.url);[m
+[32m+[m	[32mconsole.log("request method is ",req.method)[m
+[32m+[m	[32mconsole.log("request ip address is ",req.ip);[m
+ [m
+ [m
+[32m+[m
+[32m+[m	[32mnext();[m
+[32m+[m
+[32m+[m[32m})[m
+[32m+[m
+ app.get('/home',function(req,res){[m
+ 	[m
+ 	Blog.find(function(err,result){[m
+[1mdiff --git a/index.html b/index.html[m
+[1mindex b175f5a..b2b55a2 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -9,7 +9,7 @@[m
+     <meta name="description" content="">[m
+     <meta name="author" content="">[m
+ [m
+[31m-    <title>Clean Blog</title>[m
+[32m+[m[32m    <title>My Blog</title>[m
+ [m
+     <!-- Bootstrap Core CSS -->[m
+     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">[m
+[1mdiff --git a/views/edit-view.html b/views/edit-view.html[m
+[1mindex 0801d68..6763fde 100755[m
+[1m--- a/views/edit-view.html[m
+[1m+++ b/views/edit-view.html[m
+[36m@@ -9,7 +9,7 @@[m
+                        <input  type="text" name="author" ng-model="editBlgCtrl.author"  required=""><br/><br/>[m
+                       [m
+                        <textarea rows="6" cols="50" ng-model="editBlgCtrl.bodyHtml"  required="">[m
+[31m-                            sdfsdfs[m
+[32m+[m[41m                            [m
+                        </textarea>[m
+                        <br/><br/>[m
+                        <input type="submit" value="Save Blog">[m
+[36m@@ -21,7 +21,7 @@[m
+                 <hr>[m
+                 [m
+               [m
+[31m-             {{editBlgCtrl.id}}[m
+[32m+[m[41m             [m
+                 <!-- Pager -->[m
+                 <ul class="pager">[m
+                     <li class="next">[m

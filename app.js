@@ -18,7 +18,18 @@ var bodyParser = require('body-parser');
 app.use(bodyParser());
 app.use(bodyParser.json({extended:true}));
 app.use(express.static(__dirname + '/'));
+//middleware is used
+app.use(function(req,res,next){
+	console.log("time of request ",new Date());
+	console.log("request url is ",req.url);
+	console.log("request method is ",req.method)
+	console.log("request ip address is ",req.ip);
 
+
+
+	next();
+
+})
 
 app.get('/home',function(req,res){
 	
