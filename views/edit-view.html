@@ -1,0 +1,36 @@
+ <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <br/>
+                <h1>Edit blog post</h1>
+                <div class="post-preview">
+                   <form ng-submit="editBlgCtrl.editPost()">
+                        <input  type="text" name="heading" ng-model="editBlgCtrl.heading" required=""  ><br/><br/>
+                       <input  type="text" name="subHeading" ng-model="editBlgCtrl.subHeading"  required=""><br/><br/>
+                       <input  type="text" name="author" ng-model="editBlgCtrl.author"  required=""><br/><br/>
+                      
+                       <textarea rows="6" cols="50" ng-model="editBlgCtrl.bodyHtml"  required="">
+                            sdfsdfs
+                       </textarea>
+                       <br/><br/>
+                       <input type="submit" value="Save Blog">
+
+
+
+                   </form>
+                </div>
+                <hr>
+                
+              
+             {{editBlgCtrl.id}}
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                        <a href="#/home">Back to Home &rarr;</a>
+                    </li>
+                    <li class="next">
+                        <a ng-click="editBlgCtrl.deleteBlog(editBlgCtrl._id)">Delete this blog</a>
+                    </li>
+                </ul>
+                </ul>
+            </div>
+</div>

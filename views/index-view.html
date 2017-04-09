@@ -1,0 +1,31 @@
+<div class="row" ng-init="myBlog.loadAllBlogs()">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+
+                <div class="post-preview" ng-repeat="blog in myBlog.blogs">
+                    <a ng-href="#/blog/{{blog._id}}" >
+                        <h2 class="post-title">
+                            {{blog.title}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                             {{blog.subtitle}}
+                        </h3>
+                        <h3>
+                            {{blog.id}}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">{{blog.author}}</a> on {{blog.createdOn | date:'medium'}}</p>
+                </div>
+              
+                
+              
+             
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="next">
+                        <a ng-href="#/create">Add a new blog </a>
+                    </li>
+                </ul>
+            </div>
+</div>
