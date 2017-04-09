@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var Blog = require('./blogSchema.js');
 var ObjectId = mongoose.Types.ObjectId;
 console.log(typeof ObjectId)
+//db is created with blogs as collection
 mongoose.connect('mongodb://localhost/blogs');
 
 mongoose.connection.once('open',function(err){
@@ -30,7 +31,7 @@ app.use(function(req,res,next){
 	next();
 
 })
-
+//to load all blogs
 app.get('/home',function(req,res){
 	
 	Blog.find(function(err,result){
@@ -50,6 +51,7 @@ app.get('/home',function(req,res){
 
 
 })
+//to find blog by id 
 app.get('/blog/:id',function(req,res){
 	if(req.params.id)
 
@@ -58,6 +60,7 @@ app.get('/blog/:id',function(req,res){
 		res.json(result);
 	})
 })
+/*to create blog*/
 app.post('/create',function(req,res){
 	var blog = new Blog({
 		title: req.body.title,
@@ -75,6 +78,7 @@ app.post('/create',function(req,res){
 	
 
 })
+/*to edit blog*/
 app.post('/edit',function(req,res){
 	var data = {
 		title: req.body.title,
@@ -89,6 +93,7 @@ app.post('/edit',function(req,res){
 		res.send(result);
 	})
 })
+/*to delete a blog*/
 app.get('/delete/:id',function(req,res){
 	
 	Blog.deleteOne({_id:ObjectId(req.params.id)},function(err,result){
